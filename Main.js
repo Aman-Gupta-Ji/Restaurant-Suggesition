@@ -9,11 +9,31 @@ class Restro {
     }
 }
 
-class Main {
+class Processor {
     constructor(src) {
         this.list=new Map();
-
-    };
+        let fs = require('fs');
+        let g, a, f, r, n, p;
+        fs.readFile(src,'utf-8',(err,data) => {
+            const lines= data.split('\n').slice(1);
+            for(let line of lines) {
+                // console.log(line);
+                const words=line.split(',');
+                if(words.length!=7)
+                    continue;
+                g=words[1].charAt(0);
+                a=parseInt(words[2]);
+                f=words[3].toLowerCase();
+                r=parseFloat(words[4]);
+                n=words[5];
+                p=parseFloat(words[6]);
+                if(!this.list.has(f))
+                    this.list.set(f,new Array());
+                this.list.get(f).push(new Restro(g,a,f,r,n,p));
+            }
+        });
+        console.log(this.list);
+    }
     findMatch(age, gender, food, rating, pricing) {
         let food_type;
         if(this.list.has(food))
@@ -22,7 +42,7 @@ class Main {
             food_type=[];
         let ar=[];
         let score=0;
-        for(r of food_type) {
+        for(let r of food_type) {
             score=0;
             if(Math.abs(r.pricing-pricing)<200)
                 score++;
@@ -46,3 +66,4 @@ class Main {
     }
 }
 
+let processor= new Processor("restro.csv");
