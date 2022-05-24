@@ -12,7 +12,7 @@ class Restro {
 class Main {
     constructor(src) {
         this.list=new Map();
-        
+
     };
     findMatch(age, gender, food, rating, pricing) {
         let food_type;
@@ -29,6 +29,8 @@ class Main {
             if(Math.abs(r.age-age)<5)
                 score++;
             if(r.gender==gender)
+                score++;
+            if(Math.abs(r.rating-rating)<1)
                 score++;
             ar.push([score,r]);
         }
