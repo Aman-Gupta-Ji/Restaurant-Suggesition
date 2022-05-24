@@ -31,7 +31,6 @@ class Main {
             BufferedReader br = new BufferedReader(new FileReader(src));  
             line=br.readLine();
             while ((line = br.readLine()) != null) {
-                // System.out.println(line);
                 nextLine = line.split(splitBy);
                 if(nextLine.length!=7)
                     continue;
@@ -41,7 +40,6 @@ class Main {
                 r=Float.parseFloat(nextLine[4]);
                 n=nextLine[5];
                 p=Float.parseFloat(nextLine[6]);
-                System.out.println(f+","+g+","+r+","+p);
                 if(!list.containsKey(f))
                     list.put(f, new ArrayList<Restro>());
                 list.get(f).add(new Restro(g, a, f, r, n, p));
@@ -51,15 +49,14 @@ class Main {
         catch(Exception e)  {
             System.out.println(e.toString());
         }
-        System.out.println(list.size());
     }
     static ArrayList<Restro> findMatch(int age, char gender, String food, float rating, float pricing) {
         PriorityQueue<Pair<Integer,Restro>> pq=new PriorityQueue<Pair<Integer,Restro>>(new Comparator<Pair<Integer,Restro>> () {
             @Override
             public int compare(Pair<Integer,Restro> e1, Pair<Integer,Restro> e2) {
                 if(e1.getKey()!=e2.getKey())
-                    return e1.getKey()-e2.getKey();
-                return (int)(e1.getValue().rating-e2.getValue().rating);
+                    return e2.getKey()-e1.getKey();
+                return (int)(e2.getValue().rating-e1.getValue().rating);
             }
         });
         int score;
