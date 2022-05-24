@@ -2,14 +2,14 @@
 <html>
 <head>
     <link rel="stylesheet" href="index.css">
-    <script src="index.js"></script>
+	<script src="Main.js"></script>
 </head>
 <body>
 <div class="container">
 	<header>
 		<h1>
 			<a href="#">
-				<img id = "image" src="C:\Users\RAVI\Desktop\front\bg.jpg">
+				<img id = "image" src="bg.jpg">
 			</a>
 		</h1>
 	</header>
@@ -26,7 +26,7 @@
 		
         <label>
 			<span class="label-text">Gender</span>
-			<select class="select" name="carlist" form="carform" required>
+			<select class="select" name="genderlist" form="gender" required>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
@@ -34,7 +34,7 @@
 
 		<label>
 			<span class="label-text">Food Type</span>
-			<select class="select" name="carlist" form="carform" required>
+			<select class="select" name="foodlist" form="food" required>
                 <option value="Traditional">Traditional</option>
                 <option value="Western">Western</option>
             </select>
@@ -46,12 +46,12 @@
 		</label>
 
 		<div class="text-center">
-			<button class="submit" name="register">Search</button>
+			<button class="submit" onsubmit="ShowMatch()" name="search">Search</button>
 		</div>
 
 		<label >
 			<span class="label-text">Recommendations</span>
-			<input type="textarea" class="select num output">
+			<label id="output"></label>
 		</label>
         
 	</form>

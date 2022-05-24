@@ -6,7 +6,7 @@
 	padding: 0;
 }
 body{
-	background: url('C:\\Users\\RAVI\\Desktop\\front\\foods.jpg') center no-repeat;
+	background: url('foods.jpg') center no-repeat;
 	background-size: cover;
 	color: #333;
 	font-size: 18px;
@@ -29,7 +29,7 @@ body{
 	width: 98%;
 }
 .container:before{
-	background: url('C:\\Users\\RAVI\\Desktop\\front\\foods.jpg') center no-repeat;
+	background: url('foods.jpg') center no-repeat;
 	background-size: cover;
 	content: '';
 	-webkit-filter: blur(10px);

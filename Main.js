@@ -63,6 +63,24 @@ class Processor {
     }
 }
 
-let processor= new Processor("restro.csv");
+// var processor= new Processor("restro.csv");
 
-console.log(processor.findMatch(20,'M','traditional food',4.1,900));
+// console.log(processor.findMatch(20,'M','traditional food',4.1,900));
+console.log("Here");
+function ShowMatch() {
+    console.log("Hello");
+    let age=document.forms["registration-form"]["Age"].value;
+    let gender=document.forms["registration-form"]["genderlist"].value.charAt(0);
+    let food=document.forms["registration-form"]["foodlist"].value.toLowerCase();
+    let rating=document.forms["registration-form"]["Rating"].value;
+    let pricing=document.forms["registration-form"]["Pricing"].value;
+    console.log(age,gender,food,rating,pricing);
+    // const res=processor.findMatch(age,gender,food,rating,pricing);
+    let out="";
+    const res=[];
+    for(let r of res)
+        out+="<p style='color:green;textsize:20px;'>"+r.name+" : Rs."+r.pricing+"  - "+r.rating+"</p><br>";
+    if(out==="")
+        out="<h3 syle='color:red;'>No Restaurant Found</h3>";
+    document.getElementById("output").innerHTML=out;
+}
