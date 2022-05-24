@@ -62,8 +62,6 @@ class Main {
         int score;
         ArrayList<Restro> food_type=list.getOrDefault(food, new ArrayList<Restro>());
         for(Restro r: food_type) {
-            if(!r.food.equals(food))
-                continue;
             score=0;
             if(r.gender==gender)
                 score++;

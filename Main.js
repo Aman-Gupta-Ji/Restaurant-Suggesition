@@ -64,4 +64,5 @@ class Processor {
 }
 
 let processor= new Processor("restro.csv");
-// console.log(processor.list);
+
+console.log(processor.findMatch(20,'M','traditional food',4.1,900));
