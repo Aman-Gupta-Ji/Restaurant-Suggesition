@@ -14,25 +14,22 @@ class Processor {
         this.list=new Map();
         let fs = require('fs');
         let g, a, f, r, n, p;
-        fs.readFile(src,'utf-8',(err,data) => {
-            const lines= data.split('\n').slice(1);
-            for(let line of lines) {
-                // console.log(line);
-                const words=line.split(',');
-                if(words.length!=7)
-                    continue;
-                g=words[1].charAt(0);
-                a=parseInt(words[2]);
-                f=words[3].toLowerCase();
-                r=parseFloat(words[4]);
-                n=words[5];
-                p=parseFloat(words[6]);
-                if(!this.list.has(f))
-                    this.list.set(f,new Array());
-                this.list.get(f).push(new Restro(g,a,f,r,n,p));
-            }
-        });
-        console.log(this.list);
+        let data= fs.readFileSync(src).toString();
+        const lines= data.split('\n').slice(1);
+        for(let line of lines) {
+            const words=line.split(',');
+            if(words.length!=7)
+                continue;
+            g=words[1].charAt(0);
+            a=parseInt(words[2]);
+            f=words[3].toLowerCase();
+            r=parseFloat(words[4]);
+            n=words[5];
+            p=parseFloat(words[6]);
+            if(!this.list.has(f))
+                this.list.set(f,new Array());
+            this.list.get(f).push(new Restro(g,a,f,r,n,p));
+        }
     }
     findMatch(age, gender, food, rating, pricing) {
         let food_type;
@@ -67,3 +64,4 @@ class Processor {
 }
 
 let processor= new Processor("restro.csv");
+// console.log(processor.list);
